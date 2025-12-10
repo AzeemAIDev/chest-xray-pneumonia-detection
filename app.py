@@ -30,9 +30,12 @@ app = FastAPI(
 )
 
 # Allowed origins for CORS
-origins = ["http://127.0.0.1:5500",  # Localhost
-           "http://localhost:5500", 
-           "null"]  # Null origin
+origins = [
+           
+           "http://127.0.0.1:8800",  # Localhost
+           "http://localhost:8800" 
+           
+           ] 
 
 # Templates directory
 templates = Jinja2Templates(directory= "templates")  # HTML templates folder
@@ -56,10 +59,12 @@ def preprocessing_image(image_data):
         print(f"Error in image processing: {e}")  # Print error if preprocessing fails
         return None
 
+
 # Home page route
 @app.get("/" , response_class=HTMLResponse )
 async def server_ui(request : Request):
     return templates.TemplateResponse("index.html" , {"request" : request})  # Render HTML template
+
 
 # Prediction endpoint
 @app.post("/PREDICTION")
@@ -88,4 +93,4 @@ async def prediction(file: UploadFile = File(...)):
 # Run FastAPI app
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="127.0.0.1", port=8800)  # Run local server
+    uvicorn.run(app, host="localhost", port=8800)  # Run local server
