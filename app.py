@@ -10,7 +10,7 @@ from tensorflow.keras.models import load_model
 from fastapi.templating import Jinja2Templates
 
 # --- Model and Constants ---
-model_path = "chest_xray_model.keras"  # Path to the trained Keras model
+model_path = r"E:\New folder\chest-xray-pneumonia-detection\model\chest_xray_model.keras"  # Path to the trained Keras model
 image_size = (150, 150)  # Input image size
 THRESHOLD = 0.6  # Threshold to classify Pneumonia
 class_names = ["NORMAL", "PNEUMONIA"]  # Class labels
